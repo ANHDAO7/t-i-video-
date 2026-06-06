@@ -130,8 +130,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     progressPercent.textContent = '100%';
                     progressStatus.innerHTML = '<i class="fas fa-check-circle text-accent"></i> Đã tải xong! Đang lưu file về thư mục Downloads...';
                     
-                    // Trigger actual file download
-                    const downloadFileUrl = `/api/download-file?filename=${encodeURIComponent(data.filename)}&title=${encodeURIComponent(videoTitle.textContent)}`;
+                    // Trigger actual file download (chọn link download phù hợp)
+                    const downloadFileUrl = data.directUrl 
+                        ? `${data.directUrl}&title=${encodeURIComponent(videoTitle.textContent)}`
+                        : `/api/download-file?filename=${encodeURIComponent(data.filename)}&title=${encodeURIComponent(videoTitle.textContent)}`;
+                        
                     triggerBrowserDownload(downloadFileUrl);
                     
                     eventSource.close();

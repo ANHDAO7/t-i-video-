@@ -8,6 +8,7 @@
     "dev": "node server.js"
   },
   "dependencies": {
+    "@distube/ytdl-core": "^4.15.9",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "yt-dlp-exec": "latest"
