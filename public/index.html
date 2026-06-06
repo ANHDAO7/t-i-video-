@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube to USB - Tải Video Cho Tivi Sony</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glass-bg"></div>
+    <div class="glass-bg-2"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <i class="fab fa-youtube logo-icon"></i>
+                <h1>Sony<span>TV</span> Linker</h1>
+            </div>
+            <p class="subtitle">Tải video YouTube định dạng MP4 chất lượng cao, tương thích hoàn hảo với mọi dòng Tivi Sony qua USB</p>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Downloader Section -->
+            <section class="card downloader-card">
+                <div class="card-body">
+                    <div class="input-group">
+                        <span class="input-icon"><i class="fas fa-link"></i></span>
+                        <input type="text" id="youtube-url" placeholder="Dán liên kết YouTube vào đây (ví dụ: https://www.youtube.com/watch?v=...)" autocomplete="off">
+                        <button id="btn-paste" class="btn btn-secondary" title="Dán từ Clipboard">
+                            <i class="fas fa-clipboard-list"></i> <span>Dán</span>
+                        </button>
+                        <button id="btn-analyze" class="btn btn-primary">
+                            <span class="btn-text">Phân tích</span>
+                            <span class="btn-loading"><i class="fas fa-circle-notch fa-spin"></i> đang xử lý...</span>
+                        </button>
+                    </div>
+                    <div id="error-message" class="alert alert-danger hidden">
+                        <i class="fas fa-exclamation-triangle"></i> <span class="msg-text">Đã xảy ra lỗi. Vui lòng kiểm tra lại đường dẫn!</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Result Section -->
+            <section id="result-card" class="card result-card hidden">
+                <div class="card-body video-info-layout">
+                    <div class="video-thumbnail-container">
+                        <img id="video-thumbnail" src="" alt="Video Thumbnail">
+                        <span id="video-duration" class="duration-badge">00:00</span>
+                    </div>
+                    <div class="video-details">
+                        <h2 id="video-title">Tiêu đề video YouTube ở đây</h2>
+                        <p id="video-channel" class="channel-text"><i class="fas fa-tv"></i> Kênh: <span>Kênh YouTube</span></p>
+                        
+                        <div class="download-options">
+                            <h3><i class="fas fa-download"></i> Tùy chọn tải xuống cho Tivi Sony:</h3>
+                            <div class="options-grid">
+                                <button class="btn-download-opt" data-quality="best">
+                                    <div class="opt-info">
+                                        <span class="opt-title">Chất lượng tốt nhất (MP4)</span>
+                                        <span class="opt-desc">H.264 + AAC, Tương thích tối đa, hình ảnh đẹp nhất</span>
+                                    </div>
+                                    <i class="fas fa-cloud-download-alt download-icon"></i>
+                                </button>
+                                <button class="btn-download-opt" data-quality="360p">
+                                    <div class="opt-info">
+                                        <span class="opt-title">Chất lượng 360p (MP4)</span>
+                                        <span class="opt-desc">Dung lượng nhẹ, tải cực nhanh, phù hợp tivi cũ</span>
+                                    </div>
+                                    <i class="fas fa-cloud-download-alt download-icon"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Progress Container -->
+                <div id="progress-container" class="progress-container hidden">
+                    <div class="progress-header">
+                        <span id="progress-status"><i class="fas fa-spinner fa-spin"></i> Đang chuẩn bị tải video về máy...</span>
+                        <span id="progress-percent">0%</span>
+                    </div>
+                    <div class="progress-bar-wrapper">
+                        <div id="progress-bar" class="progress-bar" style="width: 0%"></div>
+                    </div>
+                    <p class="progress-note"><i class="fas fa-info-circle"></i> Video đang được xử lý trên máy tính của bạn và sẽ tự động tải xuống sau khi hoàn tất.</p>
+                </div>
+            </section>
+
+            <!-- Instructions Section -->
+            <section class="card instructions-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-usb"></i> Hướng Dẫn Sao Chép Vào USB Cho Tivi Sony</h2>
+                </div>
+                <div class="card-body">
+                    <div class="steps-container">
+                        <div class="step-card">
+                            <div class="step-num">1</div>
+                            <div class="step-content">
+                                <h3>Định Dạng (Format) USB</h3>
+                                <p>Cắm USB vào máy tính. Nhấp chuột phải vào USB chọn <strong>Format</strong>.</p>
+                                <ul>
+                                    <li>Chọn <strong>FAT32</strong> nếu dùng Tivi Sony đời cũ (hỗ trợ USB dưới 32GB).</li>
+                                    <li>Chọn <strong>NTFS</strong> hoặc <strong>exFAT</strong> nếu dùng Smart TV / Android TV Sony.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-num">2</div>
+                            <div class="step-content">
+                                <h3>Tải Video Về Máy Tính</h3>
+                                <p>Dán link YouTube vào ô tìm kiếm ở trên, nhấn <strong>Phân tích</strong> và chọn chất lượng tải để lưu file <code>.mp4</code> về máy tính của bạn.</p>
+                            </div>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-num">3</div>
+                            <div class="step-content">
+                                <h3>Chép Video Vào USB</h3>
+                                <p>Sao chép (Copy) file video <code>.mp4</code> vừa tải và Dán (Paste) vào thư mục gốc của USB (không nên để trong quá nhiều thư mục con để tivi dễ quét thấy).</p>
+                            </div>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-num">4</div>
+                            <div class="step-content">
+                                <h3>Cắm USB Vào Tivi Sony</h3>
+                                <p>Rút USB an toàn khỏi máy tính, cắm vào cổng USB trên Tivi Sony.</p>
+                                <ul>
+                                    <li>Mở ứng dụng <strong>Bộ phát video (Video)</strong>, <strong>Album</strong> hoặc <strong>Media Player</strong> trên Tivi để bắt đầu thưởng thức.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 SonyTV Linker. Công cụ được tối ưu cho Tivi Sony Bravia.</p>
+        </footer>
+    </div>
+</body>
+</html>
